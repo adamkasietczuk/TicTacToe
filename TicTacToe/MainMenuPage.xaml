@@ -1,0 +1,19 @@
+﻿<Page x:Class="TicTacToe.MainMenuPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TicTacToe"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="1024"
+      Title="MainMenuPage">
+
+    <Grid>
+        <Label Content="TicTac" FontSize="52" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,48,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="buttonPlayerVsPlayer" Content="Player vs Player" FontSize="12" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,185,0,0" VerticalAlignment="Top" Width="150" Height="50" Click="buttonPlayerVsPlayer_Click"/>
+        <Button x:Name="buttonPlayerVsComputer" Content="Player vs Computer" FontSize="12" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,240,0,0" VerticalAlignment="Top" Width="150" Height="50" Click="buttonPlayerVsComputer_Click"/>
+        <Button x:Name="buttonOptions" Content="Options" FontSize="12" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,295,0,0" VerticalAlignment="Top" Width="150" Height="50" Click="buttonOptions_Click"/>
+        <Button x:Name="buttonExit" Content="Exit" FontSize="12" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,429,0,0" VerticalAlignment="Top" Width="150" Height="50" Click="buttonExit_Click"/>
+
+    </Grid>
+</Page>

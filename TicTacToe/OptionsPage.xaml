@@ -1,0 +1,25 @@
+﻿<Page x:Class="TicTacToe.OptionsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TicTacToe"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="1024"
+      Title="OptionsPage">
+
+    <Grid>
+        <Label Content="Options" FontSize="52" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,48,0,0" VerticalAlignment="Top"/>
+        <StackPanel Orientation="Horizontal" Width="300" HorizontalAlignment="Center" Margin="370,184,370,373" >
+            <Label Content="Gameplay grid size" FontSize="14" FontWeight="Bold" HorizontalAlignment="Left" Margin="10,5,5,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="textBoxGameplayGridSize" HorizontalAlignment="Right" Height="21" Margin="60,10,10,0" TextAlignment="Right" Text="3" TextWrapping="Wrap" VerticalAlignment="Top" Width="60"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Width="300" HorizontalAlignment="Center" Margin="370,230,370,328" >
+            <Label Content="Marks to win" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center" Margin="10,5,5,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="textBoxMarksToWin" HorizontalAlignment="Center" Height="21" Margin="100,10,10,0" TextAlignment="Right" Text="3" TextWrapping="Wrap" VerticalAlignment="Top" Width="60"/>
+        </StackPanel>
+        <Button x:Name="buttonSave" Content="Save" FontSize="12" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,350,0,0" VerticalAlignment="Top" Width="150" Height="50" Click="buttonSave_Click"/>
+        <Button x:Name="buttonBack" Content="Back" FontSize="12" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,429,0,0" VerticalAlignment="Top" Width="150" Height="50" Click="buttonBack_Click"/>
+    </Grid>
+</Page>
