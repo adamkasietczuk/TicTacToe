@@ -32,12 +32,14 @@ namespace TicTacToe
 
         private void buttonPlayerVsPlayer_Click(object sender, RoutedEventArgs e)
         {
+            mainWindowView.GameView.SetAi(false);
             mainWindowView.FrameHost.NavigationUIVisibility = NavigationUIVisibility.Hidden;
             mainWindowView.FrameHost.Navigate(mainWindowView.GameView);
         }
 
         private void buttonPlayerVsComputer_Click(object sender, RoutedEventArgs e)
         {
+            mainWindowView.GameView.SetAi(true);
             mainWindowView.FrameHost.NavigationUIVisibility = NavigationUIVisibility.Hidden;
             mainWindowView.FrameHost.Navigate(mainWindowView.GameView);
         }

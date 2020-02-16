@@ -24,6 +24,7 @@ namespace TicTacToe
         private const int CELL_SIZE = 40;
         private const string PLAYER_ONE_MARKER = "O";
         private const string PLAYER_TWO_MARKER = "X";
+        private bool isAi = false;
         private bool isGameFinished = false;
         private string currentMarker = PLAYER_ONE_MARKER;
         private int leastMarkerIndex = -1;
@@ -37,6 +38,11 @@ namespace TicTacToe
             this.mainWindowView = mainWindowView;
 
             InitializeComponent();
+        }
+
+        public void SetAi(bool isAi)
+        {
+            this.isAi = isAi;
         }
 
         public bool CheckWinner()
@@ -152,8 +158,20 @@ namespace TicTacToe
         {
             if(!isGameFinished && PutMark(e.Source, Settings.GameplayGridSize))
             {
+                
+
                 if (!CheckWinner())
                 {
+                    if (isAi)
+                    {
+                        SwitchTurn();
+                        aIMove();
+                        if (CheckWinner())
+                        {
+                            EndGame();
+                            return;
+                        }
+                    }
                     SwitchTurn();
                 }
                 else
@@ -293,7 +311,15 @@ namespace TicTacToe
         {
             if(e.NewValue != null && (bool)e.NewValue == true)
             {
-                labelGameType.Content = "Player vs Player";
+                if(isAi)
+                {
+                    labelGameType.Content = "Player vs Computer";
+                }
+                else
+                {
+                    labelGameType.Content = "Player vs Player";
+                }
+                
                 labelTurn.Content = "Turn: Player One " + PLAYER_ONE_MARKER;
                 labelPlayerOneWin.Visibility = Visibility.Collapsed;
                 labelPlayerTwoWin.Visibility = Visibility.Collapsed;
@@ -313,6 +339,67 @@ namespace TicTacToe
             GenerateGrid(gridMain, Settings.GameplayGridSize);
         }
 
-        
+        private void buttonMainMenu_Click(object sender, RoutedEventArgs e)
+        {
+            mainWindowView.FrameHost.Navigate(mainWindowView.MainMenuView);
+        }
+
+        private void aIMove()
+        {
+            int bestMoveIndex = 0;
+            int bestEnemyMoveIndex = 0;
+            int bestScore = -10;
+            int tempIndex = 0;
+
+            for(int i = 0; i < Settings.GameplayGridSize; i++)
+            {
+                for (int j = 0; j < Settings.GameplayGridSize; j++)
+                {
+                    if (area[i,j] == null)
+                    {
+                        tempIndex = i * Settings.GameplayGridSize + j;
+
+                        area[i, j] = PLAYER_TWO_MARKER;
+                        if (isWinner(PLAYER_TWO_MARKER, Settings.MarksToWin, Settings.GameplayGridSize, tempIndex))
+                        {
+                            area[i, j] = null;
+                            if(bestScore < 10)
+                            {
+                                bestMoveIndex = tempIndex;
+                                bestScore = 10;
+                            }
+                        }
+
+                        area[i, j] = PLAYER_ONE_MARKER;
+                        if (isWinner(PLAYER_ONE_MARKER, Settings.MarksToWin, Settings.GameplayGridSize, tempIndex))
+                        {
+                            area[i, j] = null;
+                            if (bestScore < 10)
+                            {
+                                bestMoveIndex = tempIndex;
+                                bestScore = 10;
+                            }
+                        }
+                        area[i, j] = null;
+
+                        if (bestScore < 0)
+                        {
+                            bestMoveIndex = tempIndex;
+                            bestScore = 0;
+                        }
+                    }
+                }
+            }
+
+            if(bestScore <= 0)
+            {
+                if(area[1, 1] == null)
+                {
+                    bestMoveIndex = 4;
+                }
+            }
+
+            PutMark(buttons[bestMoveIndex], Settings.GameplayGridSize);
+        }
     }
 }

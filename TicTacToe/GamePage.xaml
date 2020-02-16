@@ -14,5 +14,6 @@
         <Label x:Name="labelGameType" Content="Game" FontWeight="Bold"  FontSize="24" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top"/>
         <Label x:Name="labelTurn" Content="Turn" FontWeight="Bold"  FontSize="24" HorizontalAlignment="Center" Margin="0,50,0,0" VerticalAlignment="Top"/>
         <Button x:Name="buttonReset" Content="Reset" HorizontalAlignment="Center" Margin="0,420,0,0" VerticalAlignment="Top" Width="76" Click="buttonReset_Click"/>
+        <Button x:Name="buttonMainMenu" Content="Main Menu" HorizontalAlignment="Center" Margin="714,420,10,0" VerticalAlignment="Top" Width="76" Click="buttonMainMenu_Click"/>
     </Grid>
 </Page>

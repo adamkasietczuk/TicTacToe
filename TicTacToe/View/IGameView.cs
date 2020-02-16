@@ -8,5 +8,6 @@ namespace TicTacToe.View
 {
     public interface IGameView
     {
+        void SetAi(bool isAi);
     }
 }
